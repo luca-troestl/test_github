@@ -6,6 +6,8 @@ public class Test {
 		
 		System.out.println("Hello GitHUb!");
 		System.out.println("second test");
+		System.out.println("Local commit end");
+		
 	}
 
 }
