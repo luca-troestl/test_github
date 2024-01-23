@@ -6,6 +6,7 @@ public class CommitTest {
 		
 		System.out.println("Commit Test");
 		System.out.println("Local Commit Test");
+		System.out.println("Hello");
 
 	}
 
