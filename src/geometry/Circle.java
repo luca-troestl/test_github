@@ -19,6 +19,3 @@ class Circle extends Shape {
     }
 }
  
-/**
-* Represents a triangle.
-*/

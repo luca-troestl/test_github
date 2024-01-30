@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
  
 class Group {
+	
+	
     private List<Shape> shapes;
  
     public Group() {
@@ -11,27 +13,27 @@ class Group {
     }
  
     /**
-     * Adds a shape to the group.
+     * Fügt eine Form der Gruppe hinzu
      *
-     * @param shape The shape to be added.
+     * @param 
      */
     public void addShape(Shape shape) {
         shapes.add(shape);
     }
  
     /**
-     * Removes a shape from the group.
+     * Entfernt eine Form aus der Gruppe
      *
-     * @param shape The shape to be removed.
+     * @param 
      */
     public void removeShape(Shape shape) {
         shapes.remove(shape);
     }
  
     /**
-     * Calculates the total area of all shapes in the group.
+     * Ermittelt die gesamte Fläche aller Formen
      *
-     * @return The total area of all shapes in the group.
+     * @return 
      */
     public double calculateTotalArea() {
         double totalArea = 0.0;
@@ -42,9 +44,9 @@ class Group {
     }
  
     /**
-     * Calculates the total circumference of all shapes in the group.
+     * Ermittelt den gesamten Umfang aller Formen in der Gruppe
      *
-     * @return The total circumference of all shapes in the group.
+     * @return 
      */
     public double calculateTotalCircumference() {
         double totalCircumference = 0.0;
@@ -55,9 +57,9 @@ class Group {
     }
  
     /**
-     * Finds the largest shape in the group based on the area.
+     * ermittelt die größte Form in der Gruppe
      *
-     * @return The largest shape in the group.
+     * @return 
      */
     public Shape findLargestShape() {
         if (shapes.isEmpty()) {
@@ -79,7 +81,7 @@ class Group {
     }
  
     /**
-     * Prints information about all shapes in the group to the console.
+     * Gibt alle Formen aus
      */
     public void printAllShapes() {
         for (Shape shape : shapes) {
@@ -90,4 +92,5 @@ class Group {
             System.out.println();
         }
     }
+    
 }

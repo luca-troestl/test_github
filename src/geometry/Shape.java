@@ -14,20 +14,17 @@ abstract class Shape {
     }
  
     /**
-     * Calculates the area of the shape.
+     * Ermittelt die Fläche der Form
      *
-     * @return The area of the shape.
+     * @return 
      */
     abstract double calculateArea();
  
     /**
-     * Calculates the circumference of the shape.
+     * Ermittelt den Umfang der Form
      *
-     * @return The circumference of the shape.
+     * @return
      */
     abstract double calculateCircumference();
 }
  
-/**
-* Represents a rectangle.
-*/
