@@ -55,7 +55,7 @@ class Group {
         }
         return totalCircumference;
     }
- 
+
     /**
      * ermittelt die größte Form in der Gruppe
      *
