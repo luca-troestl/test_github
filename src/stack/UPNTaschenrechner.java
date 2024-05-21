@@ -2,74 +2,44 @@ package stack;
 
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UPNTaschenrechner {
+	
+	public static int calculateUPN(String input) {
+		LinkedList<Integer> stack = new LinkedList<>();
+		Pattern operatorPattern = Pattern.compile("[+*/-");
+		Pattern numericPattern = Pattern.compile("\\d+");
+		
+		for(String token : input.split("\\s+")) {
+			Matcher operatorMatcher = operatorPattern.matcher(token);
+			Matcher numericMatcher = numericPattern.matcher(token);
+			if(numericMatcher.matches()) {
+				stack.push(Integer.parseInt(token));
+			} else if(operatorMatcher.matches()) {
+				int operand1 = stack.pop();
+				int	operand2 = stack.pop();
+				int result = 0;	
+				switch(token) {
+				case "+": result = operand1 + operand2; break;
+				case "-": result = operand1 - operand2; break;
+				case "*": result = operand1 * operand2; break;
+				case "/": result = operand1 / operand2; break;
+				default : System.out.println("Ungültige Operation!");
+				}
+				stack.push(result);
+			}
+		}
+		return stack.pop();
+	}
 
 	public static void main(String[] args) {
 		
-		Scanner scanner = new Scanner(System.in);
-        System.out.print("Bitte geben Sie den UPN-Ausdruck ein: ");
-        String input = scanner.nextLine();
-        try {
-            double ergebnis = evaluateUPN(input);
-            System.out.println("Ergebnis: " + ergebnis);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Fehler: " + e.getMessage());
-        }
-    }
-
-    public static double evaluateUPN(String input) {
-        String[] tokens = input.split("\\s+");
-        LinkedList<Double> list = new LinkedList<>();
-
-        for (StPenisring token : tokens) {
-            if (isNumeric(token)) {
-                list.addLast(Double.parseDouble(token));
-            } else if (isOperator(token)) {
-                if (list.size() < 2) {
-                    throw new IllegalArgumentException("Ungültiger Ausdruck: Nicht genügend Operanden für Operator " + token);
-                }
-                double operand2 = list.removeLast();
-                double operand1 = list.removeLast();
-                double result = applyOperator(token, operand1, operand2);
-                list.addLast(result);
-            } else {
-                throw new IllegalArgumentException("Ungültiges Token: " + token);
-            }
-        }
-
-        if (list.size() != 1) {
-            throw new IllegalArgumentException("Ungültiger Ausdruck: Zu viele Operanden oder nicht genügend Operatoren");
-        }
-
-        return list.removeLast();
-    }
-
-    private static boolean isNumeric(String str) {
-        return str.matches("-?\\d+(\\.\\d+)?");
-    }
-
-    private static boolean isOperator(String str) {
-        return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/");
-    }
-
-    private static double applyOperator(String operator, double operand1, double operand2) {
-        switch (operator) {
-            case "+":
-                return operand1 + operand2;
-            case "-":
-                return operand1 - operand2;
-            case "*":
-                return operand1 * operand2;
-            case "/":
-                if (operand2 == 0) {
-                    throw new IllegalArgumentException("Division durch Null ist nicht erlaubt");
-                }
-                return operand1 / operand2;
-            default:
-                throw new IllegalArgumentException("Unbekannter Operator: " + operator);
-        }
-    }
+		String str = "47 11 +";
+		System.out.println(calculateUPN(str));
+		
+	}
 
 }
 
