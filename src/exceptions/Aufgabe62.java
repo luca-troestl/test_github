@@ -28,6 +28,9 @@ public class Aufgabe62 {
 		
 				String filename = "abcTunes.txt";
 				try (PrintWriter writer = new PrintWriter(filename)) {
+					writer.println("M:C \n"
+							+ "L:1/4 \n"
+							+ "K:C");
 					writer.print(noten);
 				} catch(FileNotFoundException e) {
 					System.err.print("Cannot find file " + filename);
